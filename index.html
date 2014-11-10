@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="klingon">
+  <head>
+    <meta charset="UTF-8">
+    <title>junk dot pics</title>
+    <style>
+      body { font-family: monospace; font-size: 17px; }
+      a { color: #069; }
+      a:hover { color: black; }
+      @media (min-width: 1250px) {
+        #index { -webkit-column-count: 3; -moz-column-count: 3; column-count: 3; }
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>junk dot pics</h1></header>
+    <ul role="main" id="index"></ul>
+
+    <script>
+      var index = document.getElementById("index");
+      var req = new XMLHttpRequest();
+
+      req.open("GET", "./manifest.json", false);
+      req.send(null);
+
+      var images = JSON.parse(req.responseText);
+
+      images.forEach(function (image) {
+        var item = document.createElement("li");
+        var link = document.createElement("a");
+        link.setAttribute("href", image);
+        link.innerHTML = image;
+
+        item.appendChild(link);
+        index.appendChild(item);
+      });
+    </script>
+  </body>
+</html>
