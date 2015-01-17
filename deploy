@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rsync -ra --progress ./build/* prod-sf01:/srv/junk.pics/
